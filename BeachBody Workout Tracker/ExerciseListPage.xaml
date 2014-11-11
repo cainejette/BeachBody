@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="BeachBody_Workout_Tracker.WorkoutListPage"
+    x:Class="BeachBody_Workout_Tracker.ExerciseListPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:BeachBody_Workout_Tracker"
@@ -28,7 +28,7 @@
         </StackPanel>
 
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <ListView x:Name="WorkoutList" ItemsSource="{Binding Mode=OneWay}">
+            <ListView x:Name="ExerciseList" ItemsSource="{Binding Mode=OneWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Button Content="{Binding}" 

@@ -55,31 +55,4 @@ namespace BeachBody_Workout_Tracker
             Frame.Navigate(typeof(WorkoutListPage), selection); 
         }
     }
-
-    public sealed class WorkoutPlans
-    {
-        [PrimaryKey]
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
-        public override string ToString()
-        {
-            return this.Name;
-        }
-    }
-
-    public sealed class Workouts
-    {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
-        public int WorkoutPlanId { get; set; }
-
-        public override string ToString()
-        {
-            return this.Name;
-        }
-    }
 }
