@@ -9,6 +9,16 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <ListView x:Name="WorkoutList" ItemsSource="{Binding Mode=OneWay}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Button Content="{Binding}" 
+                            FontSize="20" 
+                            FontWeight="Bold" 
+                            HorizontalAlignment="Center"
+                            Click="Button_Click"/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

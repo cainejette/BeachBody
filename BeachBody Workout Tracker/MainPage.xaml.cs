@@ -22,7 +22,8 @@ namespace BeachBody_Workout_Tracker
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private string DB_PATH = Path.Combine(Path.Combine(ApplicationData.Current.LocalFolder.Path, "beachbody2.db3"));
+        public string DB_PATH = Path.Combine(Path.Combine(ApplicationData.Current.LocalFolder.Path, "beachbody2.db3"));
+        public SQLiteConnection dbConn;
 
         public MainPage()
         {
@@ -38,17 +39,20 @@ namespace BeachBody_Workout_Tracker
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            // TODO: Prepare page for display here.
-            SQLiteConnection dbConn = new SQLiteConnection(DB_PATH);
-
-            List<WorkoutPlans> workouts = dbConn.Table<WorkoutPlans>().ToList<WorkoutPlans>();
-            dbConn.Close();
+            this.DataContext = DataHandler.GetWorkoutPlans();
 
             // TODO: If your application contains multiple pages, ensure that you are
             // handling the hardware Back button by registering for the
             // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button selectedButton = sender as Button; 
+            WorkoutPlans selection = (WorkoutPlans)selectedButton.Content; 
+            Frame.Navigate(typeof(WorkoutListPage), selection); 
         }
     }
 
@@ -58,6 +62,20 @@ namespace BeachBody_Workout_Tracker
         public int Id { get; set; }
 
         public string Name { get; set; }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
+    }
+
+    public sealed class Workouts
+    {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public int WorkoutPlanId { get; set; }
 
         public override string ToString()
         {
