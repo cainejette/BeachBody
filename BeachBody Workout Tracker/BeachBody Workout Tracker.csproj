@@ -122,6 +122,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <None Include="beachbody2.db3" />
     <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
