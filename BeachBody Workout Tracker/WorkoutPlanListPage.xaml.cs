@@ -20,12 +20,12 @@ namespace BeachBody_Workout_Tracker
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class WorkoutPlanListPage : Page
     {
         public string DB_PATH = Path.Combine(Path.Combine(ApplicationData.Current.LocalFolder.Path, "beachbody2.db3"));
         public SQLiteConnection dbConn;
 
-        public MainPage()
+        public WorkoutPlanListPage()
         {
             this.InitializeComponent();
 
