@@ -1,4 +1,5 @@
 ﻿using BeachBody_Workout_Tracker.Common;
+using BeachBody_Workout_Tracker.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;

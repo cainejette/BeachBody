@@ -1,4 +1,5 @@
 ﻿using BeachBody_Workout_Tracker.Common;
+using BeachBody_Workout_Tracker.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -69,10 +70,10 @@ namespace BeachBody_Workout_Tracker
         {
             WorkoutPlans selectedWorkoutPlan = (WorkoutPlans)e.NavigationParameter;
 
-            this.TopText.Text = "beachbody2";
+            this.TopText.Text = "beachbody";
             this.PageTitle.Text = selectedWorkoutPlan.Name;
 
-            this.DataContext = DataHandler.GetDistinctWorkouts(selectedWorkoutPlan.Id);
+            this.DataContext = DataHandler.GetWorkoutSequence(selectedWorkoutPlan.Id);
         }
 
         /// <summary>

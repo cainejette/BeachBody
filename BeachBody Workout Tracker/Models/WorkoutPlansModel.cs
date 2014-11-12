@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BeachBody_Workout_Tracker.Models
 {
-    public sealed class WorkoutPlansModel
+    public sealed class WorkoutPlans
     {
         [PrimaryKey]
         public int Id { get; set; }

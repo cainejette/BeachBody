@@ -18,29 +18,29 @@ namespace BeachBody_Workout_Tracker
         /// <summary>
         /// Retrieves the list of workout plans
         /// </summary>
-        public static List<WorkoutPlansModel> GetWorkoutPlans()
+        public static List<WorkoutPlans> GetWorkoutPlans()
         {
-            return DataHandler.db.Table<WorkoutPlansModel>().ToList<WorkoutPlansModel>();
+            return DataHandler.db.Table<WorkoutPlans>().ToList<WorkoutPlans>();
         }
 
         /// <summary>
         /// Retrieves the list of distinct workouts for the given workout plan ID
         /// </summary>
-        public static List<WorkoutsModel> GetWorkouts(int workoutPlanId)
+        public static List<Workouts> GetWorkouts(int workoutPlanId)
         {
-            return DataHandler.GetWorkouts(workoutPlanId).Distinct<WorkoutsModel>().ToList<WorkoutsModel>();
+            return DataHandler.GetWorkoutSequence(workoutPlanId).Distinct<Workouts>().ToList<Workouts>();
         }
 
         /// <summary>
         /// Retrieves the sequence of workouts for the given workout plan ID
         /// </summary>
-        public static List<WorkoutsModel> GetWorkoutSequence(int workoutId)
+        public static List<Workouts> GetWorkoutSequence(int workoutId)
         {
-            List<WorkoutSequenceModel> workoutSequence = DataHandler.db.Table<WorkoutSequenceModel>().Where(i => i.WorkoutPlanId == workoutId).OrderBy(i => i.Order).ToList<WorkoutSequenceModel>();
-            List<WorkoutsModel> exercises = new List<WorkoutsModel>();
-            foreach (WorkoutSequenceModel ws in workoutSequence)
+            List<WorkoutSequence> workoutSequence = DataHandler.db.Table<WorkoutSequence>().Where(i => i.WorkoutPlanId == workoutId).OrderBy(i => i.Order).ToList<WorkoutSequence>();
+            List<Workouts> exercises = new List<Workouts>();
+            foreach (WorkoutSequence ws in workoutSequence)
             {
-                exercises.Add(DataHandler.db.Table<WorkoutsModel>().Where(i => i.Id == ws.WorkoutId).Single<WorkoutsModel>());
+                exercises.Add(DataHandler.db.Table<Workouts>().Where(i => i.Id == ws.WorkoutId).Single<Workouts>());
             }
 
             return exercises;
@@ -49,9 +49,9 @@ namespace BeachBody_Workout_Tracker
         /// <summary>
         /// Retrieves the workout plan with the given workout plan ID
         /// </summary>
-        public static WorkoutPlansModel GetWorkoutPlan(int workoutPlanId)
+        public static WorkoutPlans GetWorkoutPlan(int workoutPlanId)
         {
-            return DataHandler.db.Find<WorkoutPlansModel>(workoutPlanId);
+            return DataHandler.db.Find<WorkoutPlans>(workoutPlanId);
         }
     }
 }

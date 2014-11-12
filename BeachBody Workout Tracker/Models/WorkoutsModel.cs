@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BeachBody_Workout_Tracker.Models
 {
-    public sealed class WorkoutsModel
+    public sealed class Workouts
     {
         public int Id { get; set; }
 
@@ -23,7 +23,7 @@ namespace BeachBody_Workout_Tracker.Models
             if (obj == null || GetType() != obj.GetType())
                 return false;
 
-            WorkoutsModel w = (WorkoutsModel)obj;
+            Workouts w = (Workouts)obj;
             return w.Name.Equals(this.Name);
         }
 

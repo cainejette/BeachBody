@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using BeachBody_Workout_Tracker.Models;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.IO;

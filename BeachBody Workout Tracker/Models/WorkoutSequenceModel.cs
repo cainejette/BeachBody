@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BeachBody_Workout_Tracker.Models
 {
-    public sealed class WorkoutSequenceModel
+    public sealed class WorkoutSequence
     {
         public int WorkoutPlanId { get; set; }
 
