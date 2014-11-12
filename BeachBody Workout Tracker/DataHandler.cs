@@ -14,18 +14,26 @@ namespace BeachBody_Workout_Tracker
         private static string db_path = Path.Combine(Path.Combine(ApplicationData.Current.LocalFolder.Path, "beachbody2.db3"));
         private static SQLiteConnection db = new SQLiteConnection(DataHandler.db_path);
 
+        /// <summary>
+        /// Retrieves the list of workout plans
+        /// </summary>
         public static List<WorkoutPlans> GetWorkoutPlans()
         {
             return DataHandler.db.Table<WorkoutPlans>().ToList<WorkoutPlans>();
         }
 
-        // need to reimplement after taking out WorkoutPlanId from Workouts table
-        //public static List<Workouts> GetWorkouts(int workoutPlanId)
-        //{
-        //    return DataHandler.db.Table<Workouts>().Where(i => i.WorkoutPlanId == workoutPlanId).ToList<Workouts>();
-        //}
+        /// <summary>
+        /// Retrieves the list of distinct workouts for the given workout plan ID
+        /// </summary>
+        public static List<Workouts> GetWorkouts(int workoutPlanId)
+        {
+            return DataHandler.GetWorkouts(workoutPlanId).Distinct<Workouts>().ToList<Workouts>();
+        }
 
-        public static List<Workouts> GetWorkouts(int workoutId)
+        /// <summary>
+        /// Retrieves the sequence of workouts for the given workout plan ID
+        /// </summary>
+        public static List<Workouts> GetWorkoutSequence(int workoutId)
         {
             List<WorkoutSequence> workoutSequence = DataHandler.db.Table<WorkoutSequence>().Where(i => i.WorkoutPlanId == workoutId).OrderBy(i => i.Order).ToList<WorkoutSequence>();
             List<Workouts> exercises = new List<Workouts>();
@@ -37,11 +45,9 @@ namespace BeachBody_Workout_Tracker
             return exercises;
         }
 
-        public static List<Workouts> GetDistinctWorkouts(int workoutPlanId)
-        {
-            return DataHandler.GetWorkouts(workoutPlanId).Distinct<Workouts>().ToList<Workouts>();
-        }
-
+        /// <summary>
+        /// Retrieves the workout plan with the given workout plan ID
+        /// </summary>
         public static WorkoutPlans GetWorkoutPlan(int workoutPlanId)
         {
             return DataHandler.db.Find<WorkoutPlans>(workoutPlanId);
