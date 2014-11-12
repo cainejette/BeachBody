@@ -19,14 +19,27 @@ namespace BeachBody_Workout_Tracker
             return DataHandler.db.Table<WorkoutPlans>().ToList<WorkoutPlans>();
         }
 
-        public static List<Workouts> GetWorkouts(int workoutPlanId)
+        // need to reimplement after taking out WorkoutPlanId from Workouts table
+        //public static List<Workouts> GetWorkouts(int workoutPlanId)
+        //{
+        //    return DataHandler.db.Table<Workouts>().Where(i => i.WorkoutPlanId == workoutPlanId).ToList<Workouts>();
+        //}
+
+        public static List<Workouts> GetWorkouts(int workoutId)
         {
-            return DataHandler.db.Table<Workouts>().Where(i => i.WorkoutPlanId == workoutPlanId).ToList<Workouts>();
+            List<WorkoutSequence> workoutSequence = DataHandler.db.Table<WorkoutSequence>().Where(i => i.WorkoutPlanId == workoutId).OrderBy(i => i.Order).ToList<WorkoutSequence>();
+            List<Workouts> exercises = new List<Workouts>();
+            foreach (WorkoutSequence ws in workoutSequence)
+            {
+                exercises.Add(DataHandler.db.Table<Workouts>().Where(i => i.Id == ws.WorkoutId).Single<Workouts>());
+            }
+
+            return exercises;
         }
 
-        public static List<Exercises> GetExercises(int workoutId)
+        public static List<Workouts> GetDistinctWorkouts(int workoutPlanId)
         {
-            return DataHandler.db.Table<Exercises>().Where(i => i.WorkoutId == workoutId).ToList<Exercises>();
+            return DataHandler.GetWorkouts(workoutPlanId).Distinct<Workouts>().ToList<Workouts>();
         }
 
         public static WorkoutPlans GetWorkoutPlan(int workoutPlanId)
@@ -54,11 +67,24 @@ namespace BeachBody_Workout_Tracker
 
         public string Name { get; set; }
 
-        public int WorkoutPlanId { get; set; }
-
         public override string ToString()
         {
             return this.Name;
+        }
+
+        public override bool Equals(object obj)
+        {
+            // Check for null values and compare run-time types.
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+
+            Workouts w = (Workouts)obj;
+            return w.Name.Equals(this.Name);
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Id * this.Name.GetHashCode();
         }
     }
 
@@ -74,5 +100,14 @@ namespace BeachBody_Workout_Tracker
         {
             return this.Name;
         }
+    }
+
+    public sealed class WorkoutSequence
+    {
+        public int WorkoutPlanId { get; set; }
+
+        public int Order { get; set; }
+
+        public int WorkoutId { get; set; }
     }
 }

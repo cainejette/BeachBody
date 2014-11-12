@@ -69,10 +69,10 @@ namespace BeachBody_Workout_Tracker
         {
             Workouts selectedWorkout = (Workouts)e.NavigationParameter;
 
-            this.TopText.Text = "beachbody | " + DataHandler.GetWorkoutPlan(selectedWorkout.WorkoutPlanId).Name;
+            this.TopText.Text = "beachbody | ";
             this.PageTitle.Text = selectedWorkout.Name;
 
-            this.DataContext = DataHandler.GetExercises(selectedWorkout.Id);
+            this.DataContext = DataHandler.GetWorkouts(selectedWorkout.Id);
         }
 
         /// <summary>
