@@ -19,17 +19,17 @@ using Windows.UI.Xaml.Navigation;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace BeachBody_Workout_Tracker
+namespace BeachBody_Workout_Tracker.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class WorkoutListPage : Page
+    public sealed partial class ExerciseListPage : Page
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
-        public WorkoutListPage()
+        public ExerciseListPage()
         {
             this.InitializeComponent();
 
@@ -68,12 +68,12 @@ namespace BeachBody_Workout_Tracker
         /// session.  The state will be null the first time a page is visited.</param>
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
-            WorkoutPlans selectedWorkoutPlan = (WorkoutPlans)e.NavigationParameter;
+            Workouts selectedWorkout = (Workouts)e.NavigationParameter;
 
-            this.TopText.Text = "beachbody";
-            this.PageTitle.Text = selectedWorkoutPlan.Name;
+            this.TopText.Text = "beachbody | ";
+            this.PageTitle.Text = selectedWorkout.Name;
 
-            this.DataContext = DataHandler.GetWorkoutSequence(selectedWorkoutPlan.Id);
+            this.DataContext = DataHandler.GetWorkouts(selectedWorkout.Id);
         }
 
         /// <summary>
@@ -117,9 +117,7 @@ namespace BeachBody_Workout_Tracker
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Button selectedButton = sender as Button;
-            Workouts selection = (Workouts)selectedButton.Content;
-            Frame.Navigate(typeof(ExerciseListPage), selection); 
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BeachBody_Workout_Tracker.Views;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
