@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using BeachBody_Workout_Tracker.Models;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -17,29 +18,29 @@ namespace BeachBody_Workout_Tracker
         /// <summary>
         /// Retrieves the list of workout plans
         /// </summary>
-        public static List<WorkoutPlans> GetWorkoutPlans()
+        public static List<WorkoutPlansModel> GetWorkoutPlans()
         {
-            return DataHandler.db.Table<WorkoutPlans>().ToList<WorkoutPlans>();
+            return DataHandler.db.Table<WorkoutPlansModel>().ToList<WorkoutPlansModel>();
         }
 
         /// <summary>
         /// Retrieves the list of distinct workouts for the given workout plan ID
         /// </summary>
-        public static List<Workouts> GetWorkouts(int workoutPlanId)
+        public static List<WorkoutsModel> GetWorkouts(int workoutPlanId)
         {
-            return DataHandler.GetWorkouts(workoutPlanId).Distinct<Workouts>().ToList<Workouts>();
+            return DataHandler.GetWorkouts(workoutPlanId).Distinct<WorkoutsModel>().ToList<WorkoutsModel>();
         }
 
         /// <summary>
         /// Retrieves the sequence of workouts for the given workout plan ID
         /// </summary>
-        public static List<Workouts> GetWorkoutSequence(int workoutId)
+        public static List<WorkoutsModel> GetWorkoutSequence(int workoutId)
         {
-            List<WorkoutSequence> workoutSequence = DataHandler.db.Table<WorkoutSequence>().Where(i => i.WorkoutPlanId == workoutId).OrderBy(i => i.Order).ToList<WorkoutSequence>();
-            List<Workouts> exercises = new List<Workouts>();
-            foreach (WorkoutSequence ws in workoutSequence)
+            List<WorkoutSequenceModel> workoutSequence = DataHandler.db.Table<WorkoutSequenceModel>().Where(i => i.WorkoutPlanId == workoutId).OrderBy(i => i.Order).ToList<WorkoutSequenceModel>();
+            List<WorkoutsModel> exercises = new List<WorkoutsModel>();
+            foreach (WorkoutSequenceModel ws in workoutSequence)
             {
-                exercises.Add(DataHandler.db.Table<Workouts>().Where(i => i.Id == ws.WorkoutId).Single<Workouts>());
+                exercises.Add(DataHandler.db.Table<WorkoutsModel>().Where(i => i.Id == ws.WorkoutId).Single<WorkoutsModel>());
             }
 
             return exercises;
@@ -48,72 +49,9 @@ namespace BeachBody_Workout_Tracker
         /// <summary>
         /// Retrieves the workout plan with the given workout plan ID
         /// </summary>
-        public static WorkoutPlans GetWorkoutPlan(int workoutPlanId)
+        public static WorkoutPlansModel GetWorkoutPlan(int workoutPlanId)
         {
-            return DataHandler.db.Find<WorkoutPlans>(workoutPlanId);
+            return DataHandler.db.Find<WorkoutPlansModel>(workoutPlanId);
         }
-    }
-
-    public sealed class WorkoutPlans
-    {
-        [PrimaryKey]
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
-        public override string ToString()
-        {
-            return this.Name;
-        }
-    }
-
-    public sealed class Workouts
-    {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
-        public override string ToString()
-        {
-            return this.Name;
-        }
-
-        public override bool Equals(object obj)
-        {
-            // Check for null values and compare run-time types.
-            if (obj == null || GetType() != obj.GetType())
-                return false;
-
-            Workouts w = (Workouts)obj;
-            return w.Name.Equals(this.Name);
-        }
-
-        public override int GetHashCode()
-        {
-            return this.Id * this.Name.GetHashCode();
-        }
-    }
-
-    public sealed class Exercises
-    {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
-        public int WorkoutId { get; set; }
-
-        public override string ToString()
-        {
-            return this.Name;
-        }
-    }
-
-    public sealed class WorkoutSequence
-    {
-        public int WorkoutPlanId { get; set; }
-
-        public int Order { get; set; }
-
-        public int WorkoutId { get; set; }
     }
 }

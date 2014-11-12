@@ -99,6 +99,9 @@
     <Compile Include="ExerciseListPage.xaml.cs">
       <DependentUpon>ExerciseListPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\WorkoutPlansModel.cs" />
+    <Compile Include="Models\WorkoutSequenceModel.cs" />
+    <Compile Include="Models\WorkoutsModel.cs" />
     <Compile Include="WorkoutPlanListPage.xaml.cs">
       <DependentUpon>WorkoutPlanListPage.xaml</DependentUpon>
     </Compile>
