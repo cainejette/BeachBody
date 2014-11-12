@@ -144,7 +144,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\beachbody2.db3" />
+    <Content Include="Assets\beachbody2.db3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
