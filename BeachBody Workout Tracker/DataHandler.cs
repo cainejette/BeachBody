@@ -6,13 +6,14 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel;
 using Windows.Storage;
 
 namespace BeachBody_Workout_Tracker
 {
     public static class DataHandler
     {
-        private static string db_path = Path.Combine(Path.Combine(ApplicationData.Current.LocalFolder.Path, "beachbody2.db3"));
+        private static string db_path = Path.Combine(Package.Current.InstalledLocation.Path, "Assets/beachbody2.db3");
         private static SQLiteConnection db = new SQLiteConnection(DataHandler.db_path);
 
         /// <summary>
