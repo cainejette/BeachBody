@@ -96,6 +96,8 @@
     <Compile Include="Common\RelayCommand.cs" />
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="DataHandler.cs" />
+    <Compile Include="Models\Exercise.cs" />
+    <Compile Include="Models\ExerciseSequence.cs" />
     <Compile Include="Views\ExerciseListPage.xaml.cs">
       <DependentUpon>ExerciseListPage.xaml</DependentUpon>
     </Compile>

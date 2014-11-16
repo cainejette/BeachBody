@@ -35,13 +35,35 @@ namespace BeachBody_Workout_Tracker
         /// <summary>
         /// Retrieves the sequence of workouts for the given workout plan ID
         /// </summary>
-        public static List<Workouts> GetWorkoutSequence(int workoutId)
+        public static List<Workouts> GetWorkoutSequence(int workoutPlanId)
         {
-            List<WorkoutSequence> workoutSequence = DataHandler.db.Table<WorkoutSequence>().Where(i => i.WorkoutPlanId == workoutId).OrderBy(i => i.Order).ToList<WorkoutSequence>();
-            List<Workouts> exercises = new List<Workouts>();
+            List<WorkoutSequence> workoutSequence = DataHandler.db.Table<WorkoutSequence>()
+                                                                        .Where(i => i.WorkoutPlanId == workoutPlanId)
+                                                                        .OrderBy(i => i.Order)
+                                                                        .ToList<WorkoutSequence>();
+            List<Workouts> workouts = new List<Workouts>();
             foreach (WorkoutSequence ws in workoutSequence)
             {
-                exercises.Add(DataHandler.db.Table<Workouts>().Where(i => i.Id == ws.WorkoutId).Single<Workouts>());
+                workouts.Add(DataHandler.db.Table<Workouts>().Where(i => i.Id == ws.WorkoutId).Single<Workouts>());
+            }
+
+            return workouts;
+        }
+
+        /// <summary>
+        /// Retrieves the sequence of exercises for the given workout ID
+        /// </summary>
+        public static List<Exercises> GetExerciseSequence(int workoutId)
+        {
+            List<ExerciseSequence> exerciseSequence = DataHandler.db.Table<ExerciseSequence>()
+                                                                        .Where(i => i.WorkoutId == workoutId)
+                                                                        .OrderBy(i => i.Order)
+                                                                        .ToList<ExerciseSequence>();
+
+            List<Exercises> exercises = new List<Exercises>();
+            foreach (ExerciseSequence es in exerciseSequence)
+            {
+                exercises.Add(DataHandler.db.Table<Exercises>().Where(i => i.Id == es.ExerciseId).Single<Exercises>());
             }
 
             return exercises;
