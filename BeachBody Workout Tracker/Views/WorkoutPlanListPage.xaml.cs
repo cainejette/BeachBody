@@ -23,9 +23,6 @@ namespace BeachBody_Workout_Tracker.Views
     /// </summary>
     public sealed partial class WorkoutPlanListPage : Page
     {
-        public string DB_PATH = Path.Combine(Path.Combine(ApplicationData.Current.LocalFolder.Path, "beachbody2.db3"));
-        public SQLiteConnection dbConn;
-
         public WorkoutPlanListPage()
         {
             this.InitializeComponent();
@@ -40,6 +37,8 @@ namespace BeachBody_Workout_Tracker.Views
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            this.TopText.Text = "beachbody";
+            this.PageTitle.Text = "Workouts";
             this.DataContext = DataHandler.GetWorkoutPlans();
 
             // TODO: If your application contains multiple pages, ensure that you are
