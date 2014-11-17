@@ -28,7 +28,13 @@
         </StackPanel>
 
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <ListView x:Name="ExerciseList" ItemsSource="{Binding Mode=OneWay}">
+            <Pivot x:Name="pivot" Title="Exercises" ItemsSource="{Binding}">
+                <PivotItem Header="{Binding Name}" FontSize="5">
+                </PivotItem>
+
+            </Pivot>
+            
+            <!--<ListView x:Name="ExerciseList" ItemsSource="{Binding Mode=OneWay}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Button Content="{Binding}" 
@@ -38,7 +44,7 @@
                             Click="Button_Click"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
+            </ListView>-->
         </Grid>
     </Grid>
 </Page>
