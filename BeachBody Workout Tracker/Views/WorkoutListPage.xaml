@@ -28,8 +28,16 @@
 
         <Pivot Grid.Row="1">
             <PivotItem Header="Schedule" >
-                <ListView x:Name="WorkoutSchedule">
-
+                <ListView x:Name="WorkoutSchedule" ItemsSource="{Binding Mode=OneWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Button Content="{Binding}" 
+                                    FontSize="20" 
+                                    HorizontalAlignment="Left"
+                                    BorderThickness="0"
+                                    Click="Button_Click"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
                 </ListView>
             </PivotItem>
             
