@@ -70,7 +70,7 @@ namespace BeachBody_Workout_Tracker.Views
         {
             Workouts selectedWorkout = (Workouts)e.NavigationParameter;
 
-            this.TopText.Text = "beachbody | ";
+            this.TopText.Text = "beachbody";
             this.PageTitle.Text = selectedWorkout.Name;
 
             this.DataContext = DataHandler.GetExerciseSequence(selectedWorkout.Id);
