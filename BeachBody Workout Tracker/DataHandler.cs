@@ -44,7 +44,9 @@ namespace BeachBody_Workout_Tracker
             List<Workouts> workouts = new List<Workouts>();
             foreach (WorkoutSequence ws in workoutSequence)
             {
-                workouts.Add(DataHandler.db.Table<Workouts>().Where(i => i.Id == ws.WorkoutId).Single<Workouts>());
+                Workouts workout = DataHandler.db.Table<Workouts>().Where(i => i.Id == ws.WorkoutId).Single<Workouts>();
+                workout.Order = ws.Order + 1;
+                workouts.Add(workout);
             }
 
             return workouts;

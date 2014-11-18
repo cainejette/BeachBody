@@ -31,11 +31,22 @@
                 <ListView x:Name="WorkoutSchedule" ItemsSource="{Binding Mode=OneWay}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Button Content="{Binding}" 
-                                    FontSize="20" 
+                            <Button FontSize="20" 
                                     HorizontalAlignment="Left"
                                     BorderThickness="0"
-                                    Click="Button_Click"/>
+                                    Click="Button_Click">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40" />
+                                        <ColumnDefinition Width="30" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <TextBlock Grid.Column="0" Text="Day" />
+                                    <TextBlock Grid.Column="1" Text="{Binding Order}" />
+                                    <TextBlock Grid.Column="2" Text="{Binding Name}" />
+                                </Grid>
+                            </Button>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
