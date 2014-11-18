@@ -38,7 +38,7 @@ namespace BeachBody_Workout_Tracker.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             this.TopText.Text = "beachbody";
-            this.PageTitle.Text = "Workouts";
+            this.PageTitle.Text = "Workouts Plans";
             this.DataContext = DataHandler.GetWorkoutPlans();
 
             // TODO: If your application contains multiple pages, ensure that you are
