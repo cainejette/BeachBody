@@ -26,14 +26,28 @@
         </StackPanel>
 
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <ListView x:Name="WorkoutPlanList" ItemsSource="{Binding Mode=OneWay}">
+            <ListView x:Name="WorkoutPlanList" ItemsSource="{Binding Mode=OneWay}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <Button Content="{Binding}" 
+                        <Button BorderThickness="0" Click="Button_Click">
+                            <StackPanel>
+                                <TextBlock Text="{Binding Name}" 
+                                       FontSize="28" />
+
+                                <TextBlock Text="{Binding Description}" 
+                                       FontSize="16" 
+                                       Foreground="Gray"
+                                       TextWrapping="WrapWholeWords"
+                                       Margin="0,0,0,25"/>
+
+                                <!--<Button Content="{Binding}" 
                             FontSize="20" 
                             FontWeight="Bold" 
                             HorizontalAlignment="Center"
-                            Click="Button_Click"/>
+                            Click="Button_Click"/>-->
+                            </StackPanel>
+                        </Button>
+                        
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
