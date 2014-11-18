@@ -14,9 +14,11 @@ namespace BeachBody_Workout_Tracker.Models
 
         public string Name { get; set; }
 
+        public string Description { get; set; }
+
         public override string ToString()
         {
-            return this.Name;
+            return this.Name + ": " + this.Description;
         }
     }
 }
