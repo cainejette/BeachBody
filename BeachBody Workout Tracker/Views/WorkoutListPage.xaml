@@ -33,8 +33,7 @@
                         <DataTemplate>
                             <Button FontSize="20" 
                                     HorizontalAlignment="Left"
-                                    BorderThickness="0"
-                                    Click="Button_Click">
+                                    BorderThickness="1">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="40" />
@@ -53,14 +52,18 @@
             </PivotItem>
             
             <PivotItem Header="Workouts">
-                <ListView x:Name="WorkoutList" ItemsSource="{Binding Mode=OneWay}">
+                <ListView x:Name="WorkoutList" 
+                          ItemsSource="{Binding Mode=OneWay}"
+                          HorizontalContentAlignment="Stretch"
+                          HorizontalAlignment="Stretch">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Button Content="{Binding}" 
                                     FontSize="20" 
-                                    HorizontalAlignment="Left"
-                                    BorderThickness="0"
-                                    Click="Button_Click"/>
+                                    BorderThickness="1"
+                                    Click="Button_Click"
+                                    HorizontalContentAlignment="Stretch"
+                                    HorizontalAlignment="Stretch"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

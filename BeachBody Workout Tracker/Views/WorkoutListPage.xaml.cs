@@ -120,7 +120,7 @@ namespace BeachBody_Workout_Tracker.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button selectedButton = sender as Button;
-            Workouts selection = (Workouts)selectedButton.Content;
+            Workouts selection = (Workouts)selectedButton.DataContext;
             Frame.Navigate(typeof(ExerciseListPage), selection); 
         }
     }
