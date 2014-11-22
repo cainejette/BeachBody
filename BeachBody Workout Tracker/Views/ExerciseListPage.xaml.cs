@@ -69,10 +69,7 @@ namespace BeachBody_Workout_Tracker.Views
         private void NavigationHelper_LoadState(object sender, LoadStateEventArgs e)
         {
             Workouts selectedWorkout = (Workouts)e.NavigationParameter;
-
-            this.TopText.Text = "beachbody";
-            this.PageTitle.Text = selectedWorkout.Name;
-
+            this.TopText.Text = "beachbody | " + selectedWorkout.Name.ToLower();
             this.DataContext = DataHandler.GetExerciseSequence(selectedWorkout.Id);
         }
 
@@ -117,7 +114,9 @@ namespace BeachBody_Workout_Tracker.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Button selectedButton = sender as Button;
+            WorkoutPlans selection = (WorkoutPlans)selectedButton.DataContext;
+            Frame.Navigate(typeof(WorkoutListPage), selection); 
         }
     }
 }

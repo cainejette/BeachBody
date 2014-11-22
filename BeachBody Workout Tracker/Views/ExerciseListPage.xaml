@@ -21,30 +21,16 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Title Panel -->
         <StackPanel Grid.Row="0" Margin="19,0,0,0">
             <TextBlock x:Name="TopText" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
             <TextBlock x:Name="PageTitle" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
         <Grid Grid.Row="1" x:Name="ContentRoot" Margin="19,9.5,19,0">
-            <Pivot x:Name="pivot" Title="Exercises" ItemsSource="{Binding}">
-                <PivotItem Header="{Binding Name}" FontSize="5">
+            <Pivot x:Name="Exercises" ItemsSource="{Binding Mode=OneWay}">
+                <PivotItem>
                 </PivotItem>
-
             </Pivot>
-            
-            <!--<ListView x:Name="ExerciseList" ItemsSource="{Binding Mode=OneWay}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Button Content="{Binding}" 
-                            FontSize="20" 
-                            FontWeight="Bold" 
-                            HorizontalAlignment="Center"
-                            Click="Button_Click"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>-->
         </Grid>
     </Grid>
 </Page>

@@ -27,10 +27,8 @@
             x:Name="ExerciseName"
             Margin="20,-6,0,6"
             Style="{ThemeResource HeaderTextBlockStyle}" 
-            CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}">
-            Push Ups
-        </TextBlock>
-       
+            CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+
         <TextBox Grid.Row="1">
             <TextBox.HorizontalAlignment>Center</TextBox.HorizontalAlignment>
             <TextBox.Width>150</TextBox.Width>
