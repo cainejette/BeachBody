@@ -9,16 +9,34 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     
     <Page.Resources>
-        <DataTemplate x:Key="exerciseTemplate">
-            
-            <Border Name="border" 
-                    BorderBrush="Red"            
-                    BorderThickness="1"
-                    Padding="5" 
-                    Margin="5">
-                <TextBlock Text="{Binding Path=Name}" />
-            </Border>
+        <DataTemplate x:Key="repTemplate">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <TextBlock Grid.Row="0" Text="{Binding Path=Name}" />
+                <TextBox Grid.Row="1"></TextBox>
+                
+            </Grid>
         </DataTemplate>
+        
+        <DataTemplate x:Key="repWeightTemplate">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="{Binding Path=Name}" />
+                <TextBox Grid.Row="1"></TextBox>
+                <TextBox Grid.Row="2"></TextBox>
+            </Grid>
+        </DataTemplate>
+        
+        <local:ExerciseTemplateSelector x:Key="exerciseTemplateSelector" />
     </Page.Resources>
 
     <Grid x:Name="LayoutRoot">
@@ -39,14 +57,17 @@
             <TextBlock x:Name="PageTitle" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
         </StackPanel>
 
-        <Pivot x:Name="Exercises" ItemsSource="{Binding}" >
+        <Pivot x:Name="Exercises" 
+               ItemsSource="{Binding}" 
+               ItemTemplateSelector="{StaticResource ResourceKey=exerciseTemplateSelector}">
             <Pivot.HeaderTemplate>
                 <DataTemplate />
             </Pivot.HeaderTemplate>
             
-            <Pivot.ItemTemplate> 
+            <!--<Pivot.ItemTemplate> 
                 <DataTemplate>
-                    <Grid>
+                    
+                    --><!--<Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
@@ -54,9 +75,9 @@
 
                         <TextBlock Grid.Row="0" x:Name="ExerciseName" Text="{Binding Name}" />
                         <TextBox Grid.Row="1"></TextBox>
-                    </Grid>
+                    </Grid>--><!--
                 </DataTemplate>
-            </Pivot.ItemTemplate>
+            </Pivot.ItemTemplate>-->
         </Pivot>
     </Grid>
 </Page>
