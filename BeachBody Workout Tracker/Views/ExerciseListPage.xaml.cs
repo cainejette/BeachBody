@@ -28,6 +28,7 @@ namespace BeachBody_Workout_Tracker.Views
     {
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
+        private List<Models.Exercises> ExercisesList;
 
         public ExerciseListPage()
         {
@@ -70,6 +71,7 @@ namespace BeachBody_Workout_Tracker.Views
         {
             Workouts selectedWorkout = (Workouts)e.NavigationParameter;
             this.TopText.Text = "beachbody | " + selectedWorkout.Name.ToLower();
+            this.ExercisesList = DataHandler.GetExerciseSequence(selectedWorkout.Id);
             this.DataContext = DataHandler.GetExerciseSequence(selectedWorkout.Id);
         }
 
