@@ -104,6 +104,9 @@
     <Compile Include="Models\WorkoutPlansModel.cs" />
     <Compile Include="Models\WorkoutSequenceModel.cs" />
     <Compile Include="Models\WorkoutsModel.cs" />
+    <Compile Include="Views\ExercisePage.xaml.cs">
+      <DependentUpon>ExercisePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\WorkoutHistoryPage.xaml.cs">
       <DependentUpon>WorkoutHistoryPage.xaml</DependentUpon>
     </Compile>
@@ -136,6 +139,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Views\ExerciseListPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ExercisePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

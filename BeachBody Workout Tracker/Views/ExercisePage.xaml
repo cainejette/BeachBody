@@ -1,0 +1,51 @@
+﻿<Page
+    x:Class="BeachBody_Workout_Tracker.Views.ExercisePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BeachBody_Workout_Tracker.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="ContentRoot">
+
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" 
+            x:Name="ExerciseName"
+            Margin="20,-6,0,6"
+            Style="{ThemeResource HeaderTextBlockStyle}" 
+            CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}">
+            Push Ups
+        </TextBlock>
+       
+        <TextBox Grid.Row="1">
+            <TextBox.HorizontalAlignment>Center</TextBox.HorizontalAlignment>
+            <TextBox.Width>150</TextBox.Width>
+        </TextBox>
+        
+        <TextBlock Grid.Row="2">
+            <TextBlock.HorizontalAlignment>Center</TextBlock.HorizontalAlignment>
+            <TextBlock.Text>reps</TextBlock.Text>
+        </TextBlock>
+        
+        <RadioButton Grid.Row="3" Margin="25,0,0,0"></RadioButton>
+        <RadioButton Grid.Row="3" Margin="105,0,0,0"></RadioButton>
+        <RadioButton Grid.Row="3" Margin="185,0,0,0"></RadioButton>
+        <RadioButton Grid.Row="3" Margin="265,0,0,0"></RadioButton>
+        <RadioButton Grid.Row="3" Margin="345,0,0,0"></RadioButton>
+        
+    </Grid>
+</Page>
