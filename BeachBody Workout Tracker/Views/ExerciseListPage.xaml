@@ -8,37 +8,10 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     
-    <Page.Resources>
-        <DataTemplate x:Key="repTemplate">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                
-                <TextBlock Grid.Row="0" Text="{Binding Path=Name}" />
-                <TextBox Grid.Row="1"></TextBox>
-                
-            </Grid>
-        </DataTemplate>
-        
-        <DataTemplate x:Key="repWeightTemplate">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-
-                <TextBlock Grid.Row="0" Text="{Binding Path=Name}" />
-                <TextBox Grid.Row="1"></TextBox>
-                <TextBox Grid.Row="2"></TextBox>
-            </Grid>
-        </DataTemplate>
-        
+    <Page.Resources>    
         <local:ExerciseTemplateSelector x:Key="exerciseTemplateSelector" />
     </Page.Resources>
-
+    
     <Grid x:Name="LayoutRoot">
 
         <Grid.ChildrenTransitions>
@@ -63,21 +36,6 @@
             <Pivot.HeaderTemplate>
                 <DataTemplate />
             </Pivot.HeaderTemplate>
-            
-            <!--<Pivot.ItemTemplate> 
-                <DataTemplate>
-                    
-                    --><!--<Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-
-                        <TextBlock Grid.Row="0" x:Name="ExerciseName" Text="{Binding Name}" />
-                        <TextBox Grid.Row="1"></TextBox>
-                    </Grid>--><!--
-                </DataTemplate>
-            </Pivot.ItemTemplate>-->
         </Pivot>
     </Grid>
 </Page>

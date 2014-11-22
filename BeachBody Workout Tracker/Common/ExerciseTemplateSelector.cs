@@ -28,16 +28,16 @@ namespace BeachBody_Workout_Tracker
                 {
 
                     case 0:
-                        return element.Resources["repTemplate"] as DataTemplate;
+                        return Application.Current.Resources["repTemplate"] as DataTemplate;
 
                     case 1:
-                        return element.Resources["repWeightTemplate"] as DataTemplate;
+                        return Application.Current.Resources["repWeightTemplate"] as DataTemplate;
 
                     case 2:
-                        return element.Resources["repTemplate"] as DataTemplate;
+                        return Application.Current.Resources["durationTemplate"] as DataTemplate;
 
                     default:
-                        return element.Resources["repTemplate"] as DataTemplate;
+                        return Application.Current.Resources["leftRightTemplate"] as DataTemplate;
                 }
             }
 

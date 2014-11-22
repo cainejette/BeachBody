@@ -4,4 +4,32 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:BeachBody_Workout_Tracker">
 
+    <Application.Resources>
+        <DataTemplate x:Key="repTemplate">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="{Binding Path=Name}" />
+                <TextBox Grid.Row="1"></TextBox>
+
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="repWeightTemplate">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="{Binding Path=Name}" />
+                <TextBox Grid.Row="1"></TextBox>
+                <TextBox Grid.Row="2"></TextBox>
+            </Grid>
+        </DataTemplate>
+    </Application.Resources>
 </Application>
