@@ -7,6 +7,19 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+    <Page.Resources>
+        <DataTemplate x:Key="exerciseTemplate">
+            
+            <Border Name="border" 
+                    BorderBrush="Red"            
+                    BorderThickness="1"
+                    Padding="5" 
+                    Margin="5">
+                <TextBlock Text="{Binding Path=Name}" />
+            </Border>
+        </DataTemplate>
+    </Page.Resources>
 
     <Grid x:Name="LayoutRoot">
 
@@ -30,10 +43,17 @@
             <Pivot.HeaderTemplate>
                 <DataTemplate />
             </Pivot.HeaderTemplate>
-            <Pivot.ItemTemplate>
+            
+            <Pivot.ItemTemplate> 
                 <DataTemplate>
                     <Grid>
-                        <Button Content="{Binding Name}" />
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" x:Name="ExerciseName" Text="{Binding Name}" />
+                        <TextBox Grid.Row="1"></TextBox>
                     </Grid>
                 </DataTemplate>
             </Pivot.ItemTemplate>
