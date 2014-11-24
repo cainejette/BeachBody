@@ -6,18 +6,19 @@
 
     <Application.Resources>
         <DataTemplate x:Key="repTemplate">
-            <Grid>
+            <Grid Width="350" Height="300">
                 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 
-                <TextBlock Grid.Row="0" Text="{Binding Path=Name}" FontSize="30" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="0" Margin="0,20,0,0" Text="{Binding Path=Name}" FontSize="50" HorizontalAlignment="Center" TextWrapping="WrapWholeWords"
+                           TextAlignment="Center"/>
                 <local:AutoFocusTextBox Grid.Row="1" Width="150" HorizontalAlignment="Center" 
-                         InputScope="Number" TextAlignment="Center" />
-                <TextBlock Grid.Row="2" Text="reps" FontSize="10" HorizontalAlignment="Center" />
+                         InputScope="Number" TextAlignment="Center" Height="100" FontSize="70" VerticalContentAlignment="Stretch" />
+                <TextBlock Grid.Row="2" Text="reps" FontSize="20" HorizontalAlignment="Center" />
 
             </Grid>
         </DataTemplate>
@@ -25,9 +26,9 @@
         <DataTemplate x:Key="repWeightTemplate">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 
                 <Grid.ColumnDefinitions>
@@ -35,37 +36,39 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding Path=Name}" FontSize="30" HorizontalAlignment="Center"/>
-                <local:AutoFocusTextBox Grid.Row="1" Grid.Column="0" Width="150" Margin="10, 0, 10, 0" HorizontalAlignment="Center"
-                         InputScope="Number" TextAlignment="Center"/>
-                <TextBox Grid.Row="1" Grid.Column="1" Width="150" Margin="10, 0, 10, 0" HorizontalAlignment="Center"
-                         InputScope="Number" TextAlignment="Center"/>
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="reps" FontSize="10" HorizontalAlignment="Center"/>
-                <TextBlock Grid.Row="2" Grid.Column="1" Text="lbs" FontSize="10" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Margin="0,20,0,0" Text="{Binding Path=Name}" FontSize="50" HorizontalAlignment="Center" TextWrapping="WrapWholeWords"
+                           TextAlignment="Center"/>
+                <local:AutoFocusTextBox Grid.Row="1" Grid.Column="0" Width="150" HorizontalAlignment="Center" Margin="10, 0, 10, 0"
+                         InputScope="Number" TextAlignment="Center" Height="100" FontSize="70" VerticalContentAlignment="Stretch" />
+                <TextBox Grid.Row="1" Grid.Column="1" Width="150" HorizontalAlignment="Center" Margin="10, 0, 10, 0"
+                         InputScope="Number" TextAlignment="Center" Height="100" FontSize="70" VerticalContentAlignment="Stretch" />
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="reps" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="lbs" FontSize="20" HorizontalAlignment="Center"/>
             </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="durationTemplate">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Grid.Row="0" Text="{Binding Path=Name}" FontSize="30" HorizontalAlignment="Center" />
-                <local:AutoFocusTextBox Grid.Row="1" Width="150" HorizontalAlignment="Center" 
-                         InputScope="Number" TextAlignment="Center"/>
-                <TextBlock Grid.Row="2" Text="seconds" FontSize="10" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="0" Margin="0,20,0,0" Text="{Binding Path=Name}" FontSize="50" HorizontalAlignment="Center" TextWrapping="WrapWholeWords"
+                           TextAlignment="Center"/>
+                <local:AutoFocusTextBox Grid.Row="1" Width="150" HorizontalAlignment="Center" Margin="10, 0, 10, 0"
+                         InputScope="Number" TextAlignment="Center" Height="100" FontSize="70" VerticalContentAlignment="Stretch" />
+                <TextBlock Grid.Row="2" Text="seconds" FontSize="20" HorizontalAlignment="Center" />
             </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="leftRightTemplate">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
                 <Grid.ColumnDefinitions>
@@ -73,13 +76,14 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding Path=Name}" FontSize="30" HorizontalAlignment="Center"/>
-                <local:AutoFocusTextBox Grid.Row="1" Grid.Column="0" Width="150" Margin="10, 0, 10, 0" HorizontalAlignment="Center"
-                         InputScope="Number" TextAlignment="Center"/>
-                <TextBox Grid.Row="1" Grid.Column="1" Width="150" Margin="10, 0, 10, 0" HorizontalAlignment="Center"
-                         InputScope="Number" TextAlignment="Center"/>
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="left" FontSize="10" HorizontalAlignment="Center"/>
-                <TextBlock Grid.Row="2" Grid.Column="1" Text="right" FontSize="10" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Margin="0,20,0,0" Text="{Binding Path=Name}" FontSize="50" HorizontalAlignment="Center" TextWrapping="WrapWholeWords"
+                           TextAlignment="Center"/>
+                <local:AutoFocusTextBox Grid.Row="1" Grid.Column="0" Width="150" HorizontalAlignment="Center" Margin="10, 0, 10, 0"
+                         InputScope="Number" TextAlignment="Center" Height="100" FontSize="70" VerticalContentAlignment="Stretch" />
+                <TextBox Grid.Row="1" Grid.Column="1" Width="150" HorizontalAlignment="Center" Margin="10, 0, 10, 0"
+                         InputScope="Number" TextAlignment="Center" Height="100" FontSize="70" VerticalContentAlignment="Stretch" />
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="left" FontSize="20" HorizontalAlignment="Center"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="right" FontSize="20" HorizontalAlignment="Center"/>
             </Grid>
         </DataTemplate>
         
