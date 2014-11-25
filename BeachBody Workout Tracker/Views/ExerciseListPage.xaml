@@ -32,7 +32,8 @@
 
         <Pivot x:Name="Exercises" 
                ItemsSource="{Binding}" 
-               ItemTemplateSelector="{StaticResource ResourceKey=exerciseTemplateSelector}">
+               ItemTemplateSelector="{StaticResource ResourceKey=exerciseTemplateSelector}"
+               SelectionChanged="Pivot_SelectionChanged">
             <Pivot.HeaderTemplate>
                 <DataTemplate />
             </Pivot.HeaderTemplate>

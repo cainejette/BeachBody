@@ -29,6 +29,7 @@ namespace BeachBody_Workout_Tracker.Views
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
         private List<Models.Exercises> ExercisesList;
+        private List<Exercises> exercises;
 
         public ExerciseListPage()
         {
@@ -73,8 +74,14 @@ namespace BeachBody_Workout_Tracker.Views
             this.TopText.Text = "beachbody | " + selectedWorkout.Name.ToLower();
             //this.ExercisesList = DataHandler.GetExerciseSequence(selectedWorkout.Id);
 
-            List<Exercises> exercises = DataHandler.GetExerciseSequence(selectedWorkout.Id);
-            this.DataContext = exercises;
+            this.exercises = DataHandler.GetExerciseSequence(selectedWorkout.Id);
+            this.exercises.Add(new Exercises
+                {
+                    ExerciseLoggingTypeId = -1,
+                    Name = "Done",
+                    Id = -1
+                });
+            this.DataContext = this.exercises;
         }
 
         /// <summary>
@@ -121,6 +128,23 @@ namespace BeachBody_Workout_Tracker.Views
             Button selectedButton = sender as Button;
             WorkoutPlans selection = (WorkoutPlans)selectedButton.DataContext;
             Frame.Navigate(typeof(WorkoutListPage), selection); 
+        }
+
+        private void Pivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.AddedItems.Count > 0 && this.exercises.Last().Equals(e.AddedItems[0]) &&
+                e.RemovedItems.Count > 0 && this.exercises.First().Equals(e.RemovedItems[0]))
+            {
+                this.Exercises.SelectedIndex = 0;
+
+
+            }
+
+            
+            //else if (e.RemovedItems[0].Equals(PivotItem8))
+            //{
+            //    // NavigationService.Navigate(new Uri("/NextPage.xaml", UriKind.Relative));
+            //}
         }
     }
 }

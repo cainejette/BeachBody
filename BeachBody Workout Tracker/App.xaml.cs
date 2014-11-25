@@ -128,5 +128,10 @@ namespace BeachBody_Workout_Tracker
             // TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

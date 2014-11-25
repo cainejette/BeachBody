@@ -27,6 +27,9 @@ namespace BeachBody_Workout_Tracker
                 switch (exercise.ExerciseLoggingTypeId)
                 {
 
+                    case -1:
+                        return Application.Current.Resources["workoutCompleteTemplate"] as DataTemplate;
+
                     case 0:
                         return Application.Current.Resources["repTemplate"] as DataTemplate;
 
